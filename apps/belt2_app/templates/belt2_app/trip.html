@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Trip:</h1>
+        <p>Planned by: {{this_trip.created_by.first_name}}</p>
+        <p>Description: {{description}}</p>
+        <p>Travel Date From: {{start_date}}</p>
+        <p>Travel Date To: {{end_date}}</p>
+        <p>Other Users Joining The Trip:</p>
+        {% if trip.owner %}
+        <ul>
+            {% for traveler in this_trip.traveler.all %}
+            <li>{{traveler.first_name}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <a class="btn btn-primary" href="/dashboard" role="button">Go Back</a>
+    </center>
+</body>
+</html>
